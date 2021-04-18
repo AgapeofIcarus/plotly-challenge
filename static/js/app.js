@@ -11,4 +11,6 @@ function getPlot(id) {
     var washing = data.metadata.map(data => data.washing)
     console.log(`Washing Frequency: ${washing}`)
 
-    
+    var samples = data.samples.filter(s => s.id.toString() === id)[0];
+
+        console.log(samples);
