@@ -1,4 +1,4 @@
-const info = "../samples.json";
+const info = "samples.json";
 
 //Get the data and generate the plots
 function getPlot(id) {
@@ -8,8 +8,8 @@ function getPlot(id) {
         console.log(data);
     });
 
-    var washing = data.metadata.map(data => data.washing)
-    console.log(`Washing Frequency: ${washing}`)
+    var wfreq = data.metadata.map(data => data.wfreq)
+    console.log(`Washing Frequency: ${wfreq}`)
 
     var samples = data.samples.filter(s => s.id.toString() === id)[0];
 
@@ -96,7 +96,7 @@ function getPlot(id) {
 // Done plotting. Now lets get the data.
 
 function getInfo(id) {
-    d3.json("../samples.json").then((data)=> {
+    d3.json("samples.json").then((data)=> {
 
         var metadata = data.metadata;
 
@@ -124,7 +124,7 @@ function optionChanged(id) {
 function init() {
     var dropdown = d3.select("#selDataset");
 
-    d3.json("../samples.json").then((data)=> {
+    d3.json("samples.json").then((data)=> {
         console.log(data)
 
         data.names.forEach(function(name) {
