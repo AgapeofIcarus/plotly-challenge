@@ -91,9 +91,49 @@ function getPlot(id) {
 
     Plotly.newPlot("gauge", data)
 
-    });    
-}
+    };    
 
 // Done plotting. Now lets get the data.
 
+function getInfo(id) {
+    d3.json("../samples.json").then((data)=> {
 
+        var metadata = data.metadata;
+
+        console.log(metadata)
+
+        var result = metadata.filter(meta => meta.id.toString() === id)[0];
+
+        var demographics = d3.select("#sample-metadata");
+
+        demographics.html("");
+
+        Object.entries(result).forEach((key) => {   
+            demographics.append("h5").text(key[0].toUpperCase() + ": " + key[1] + "\n");    
+        });
+    });
+}
+
+// Function event time
+
+function optionChanged(id) {
+    getPlot(id);
+    getInfo(id);
+}
+
+function init() {
+    var dropdown = d3.select("#selDataset");
+
+    d3.json("../samples.json").then((data)=> {
+        console.log(data)
+
+        data.names.forEach(function(name) {
+            dropdown.append("option").text(name).property("value");
+        });
+
+        getPlot(data.names[0]);
+        getInfo(data.names[0]);
+    });
+}
+
+init();
