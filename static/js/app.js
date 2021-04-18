@@ -56,4 +56,38 @@ function getPlot(id) {
 
     Plotly.newPlot("bar", data, layout);
 
+    //Bubble plot now
+
+    var trace1 = {
+        x: samples.otu_ids,
+        y: samples.sample_values,
+        mode: "markers",
+        marker: {
+            size: samples.sample_values,
+            color: samples.otu_ids
+        },
+        text: samples.otu_labels
+
+    };
+
+    var layout = {
+        xaxis:{title: "OTU IDs"},
+        height: 600,
+        width: 1300
+    };
+
+    var data1 = [trace1];
+
+    Plotly.newPlot("bubble", data1, layout); 
+
+    // create pie chart
+    var tracePie = {
+        labels: idOtu,
+        values:values,
+        type:"pie",
+    }
+
+    var data = [tracePie]
+
     
+
