@@ -80,7 +80,7 @@ function getPlot(id) {
 
     Plotly.newPlot("bubble", data1, layout); 
 
-    // create pie chart
+    // Now for the pie chart
     var tracePie = {
         labels: idOtu,
         values:values,
@@ -89,5 +89,11 @@ function getPlot(id) {
 
     var data = [tracePie]
 
-    
+    Plotly.newPlot("gauge", data)
+
+    });    
+}
+
+// Done plotting. Now lets get the data.
+
 
