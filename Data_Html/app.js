@@ -28,7 +28,7 @@ function buildMetadata(selection) {
 function buildcharts(selection) {
 
     // Fetch the JSON data
-    d3.json("samples.json").then((data)=> {
+    d3.json("samples.json").then((Data) => {
 
         var filteredData = Data.samples;
         console.log(parsedData);
