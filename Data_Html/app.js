@@ -31,7 +31,7 @@ function buildcharts(selection) {
     d3.json("samples.json").then((Data) => {
 
         var filteredData = Data.samples;
-        console.log(parsedData);
+        console.log(filteredData);
 
         var items = filteredData.filter(item => item.id == selection)[0];
         console.log(items);
@@ -112,7 +112,7 @@ function init() {
         // Add dropdown option for each sample
         var dropdownMenu = d3.select("#selDataset");
 
-        parsedData.forEach((name) => {
+        filteredData.forEach((name) => {
             dropdownMenu.append("option").property("value", name).text(name);
         })
 
